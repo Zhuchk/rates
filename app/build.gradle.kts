@@ -54,7 +54,7 @@ dependencies {
     implementation(project((":component.ui")))
     implementation(project((":component.utils")))
     implementation(project((":component.navigation")))
-    implementation(project((":feature.main")))
+    implementation(project((":feature.rates")))
     implementation(project((":feature.splash")))
     
     implementation(SupportLibraries.material)

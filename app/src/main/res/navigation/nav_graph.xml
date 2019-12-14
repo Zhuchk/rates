@@ -19,6 +19,6 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="dmitry.zhuchkov.feature.main.ui.MainFragment"
+        android:name="dmitry.zhuchkov.feature.rates.ui.RatesFragment"
         android:label="MainFragment" />
 </navigation>

@@ -1,4 +1,4 @@
-package dmitry.zhuchkov.feature.main.presentation
+package dmitry.zhuchkov.feature.rates.presentation
 
 import dmitry.zhuchkov.component.mvp.MVPView
 
@@ -6,4 +6,4 @@ import dmitry.zhuchkov.component.mvp.MVPView
  * Created by Dmitrii on 12.12.2019
  *
  */
-interface MainView: MVPView
+interface RatesView: MVPView
