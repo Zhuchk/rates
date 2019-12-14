@@ -1,6 +1,6 @@
 package dmitrii.zhuchkov.testrates.features.presentation
 
-import dmitrii.zhuchkov.testrates.presentation.MVPView
+import dmitry.zhuchkov.component.mvp.MVPView
 
 /**
  * Created by Dmitrii on 12.12.2019

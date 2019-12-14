@@ -1,8 +1,8 @@
 package dmitrii.zhuchkov.testrates.features.presentation
 
-import dmitrii.zhuchkov.testrates.navigation.NavigationEventProvider
+import dmitry.zhuchkov.component.navigation.NavigationEventProvider
 import dmitrii.zhuchkov.testrates.navigation.ToMainScreenEvent
-import dmitrii.zhuchkov.testrates.presentation.BasePresenter
+import dmitry.zhuchkov.component.mvp.MVPPresenter
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
@@ -15,7 +15,7 @@ import javax.inject.Inject
  */
 class SplashPresenter @Inject constructor(
     private val navigationEventProvider: NavigationEventProvider
-) : BasePresenter<SplashView>() {
+) : MVPPresenter<SplashView>() {
 
     private companion object {
         const val DELAY_SEC = 1L

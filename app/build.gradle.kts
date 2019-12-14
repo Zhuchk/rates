@@ -50,6 +50,13 @@ android {
 }
 
 dependencies {
+    implementation(project((":component.mvp")))
+    implementation(project((":component.ui")))
+    implementation(project((":component.utils")))
+    implementation(project((":component.navigation")))
+    implementation(project((":feature.main")))
+    implementation(project((":feature.splash")))
+    
     implementation(SupportLibraries.material)
     implementation(SupportLibraries.constraint)
     implementation(SupportLibraries.recyclerView)

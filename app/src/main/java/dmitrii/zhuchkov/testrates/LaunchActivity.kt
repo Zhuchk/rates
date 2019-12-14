@@ -8,16 +8,15 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections
-import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
 import dagger.android.DispatchingAndroidInjector
-import dmitrii.zhuchkov.testrates.base.BaseActivity
-import dmitrii.zhuchkov.testrates.base.BaseFragment
-import dmitrii.zhuchkov.testrates.base.hideSoftKeyboard
-import dmitrii.zhuchkov.testrates.navigation.NavigationEvent
-import dmitrii.zhuchkov.testrates.navigation.NavigationEventProvider
+import dmitry.zhuchkov.component.navigation.NavigationEvent
+import dmitry.zhuchkov.component.navigation.NavigationEventProvider
 import dmitrii.zhuchkov.testrates.navigation.NavigationExit
 import dmitrii.zhuchkov.testrates.navigation.NavigationUp
+import dmitry.zhuchkov.component.mvp.MVPFragment
+import dmitry.zhuchkov.component.ui.BaseActivity
+import dmitry.zhuchkov.component.ui.hideSoftKeyboard
 import javax.inject.Inject
 
 class LaunchActivity : BaseActivity() {
@@ -59,7 +58,7 @@ class LaunchActivity : BaseActivity() {
         val fragment = supportFragmentManager.findFragmentById(R.id.navigation_host)
 
         fragment?.childFragmentManager?.fragments?.forEach {
-            if (it is BaseFragment && !it.onBackPressed()) {
+            if (it is MVPFragment && !it.onBackPressed()) {
                 super.onBackPressed()
             }
         }

@@ -3,6 +3,7 @@ package dmitrii.zhuchkov.testrates.navigation
 import android.os.Bundle
 import androidx.navigation.NavDirections
 import dmitrii.zhuchkov.testrates.R
+import dmitry.zhuchkov.component.navigation.NavigationEvent
 
 /**
  * Created by Dmitrii on 12.12.2019
