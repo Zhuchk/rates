@@ -1,9 +1,9 @@
-package dmitrii.zhuchkov.testrates.features.main.ui
+package dmitry.zhuchkov.feature.main.ui
 
-import dmitrii.zhuchkov.testrates.R
 import dmitry.zhuchkov.component.mvp.MVPFragment
-import dmitrii.zhuchkov.testrates.features.main.presentation.MainPresenter
-import dmitrii.zhuchkov.testrates.features.main.presentation.MainView
+import dmitry.zhuchkov.feature.main.R
+import dmitry.zhuchkov.feature.main.presentation.MainPresenter
+import dmitry.zhuchkov.feature.main.presentation.MainView
 import javax.inject.Inject
 
 /**

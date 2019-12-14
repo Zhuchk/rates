@@ -1,6 +1,7 @@
-package dmitrii.zhuchkov.testrates.features.main.presentation
+package dmitry.zhuchkov.feature.main.presentation
 
 import dmitry.zhuchkov.component.mvp.MVPPresenter
+import dmitry.zhuchkov.feature.main.presentation.MainView
 import javax.inject.Inject
 
 /**

@@ -1,4 +1,4 @@
-package dmitrii.zhuchkov.testrates.features.main.presentation
+package dmitry.zhuchkov.feature.main.presentation
 
 import dmitry.zhuchkov.component.mvp.MVPView
 

@@ -1,8 +1,7 @@
-package dmitrii.zhuchkov.testrates.features.presentation
+package dmitry.zhuchkov.feature.splash.presentation
 
-import dmitry.zhuchkov.component.navigation.NavigationEventProvider
-import dmitrii.zhuchkov.testrates.navigation.ToMainScreenEvent
 import dmitry.zhuchkov.component.mvp.MVPPresenter
+import dmitry.zhuchkov.feature.splash.navigation.SplashRouter
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
@@ -14,7 +13,7 @@ import javax.inject.Inject
  *
  */
 class SplashPresenter @Inject constructor(
-    private val navigationEventProvider: NavigationEventProvider
+    private val router: SplashRouter
 ) : MVPPresenter<SplashView>() {
 
     private companion object {
@@ -25,7 +24,7 @@ class SplashPresenter @Inject constructor(
         Completable.timer(DELAY_SEC, TimeUnit.SECONDS)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
-                navigationEventProvider.navigationEvent.value = ToMainScreenEvent()
+                router.openMainScreen()
             }
             .addTo(compositeDisposable)
     }

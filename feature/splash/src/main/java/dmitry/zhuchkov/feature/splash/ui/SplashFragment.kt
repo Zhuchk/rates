@@ -1,9 +1,9 @@
-package dmitrii.zhuchkov.testrates.features.ui
+package dmitry.zhuchkov.feature.splash.ui
 
-import dmitrii.zhuchkov.testrates.R
 import dmitry.zhuchkov.component.mvp.MVPFragment
-import dmitrii.zhuchkov.testrates.features.presentation.SplashPresenter
-import dmitrii.zhuchkov.testrates.features.presentation.SplashView
+import dmitry.zhuchkov.feature.splash.R
+import dmitry.zhuchkov.feature.splash.presentation.SplashPresenter
+import dmitry.zhuchkov.feature.splash.presentation.SplashView
 import javax.inject.Inject
 
 /**

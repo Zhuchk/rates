@@ -14,6 +14,9 @@ android {
 }
 
 dependencies {
+    implementation(project((":component.mvp")))
+    implementation(project((":component.ui")))
+
     implementation(Libraries.rxKotlin)
     implementation(Libraries.rxAndroid)
 
@@ -21,6 +24,8 @@ dependencies {
     implementation(Libraries.kotlinReflect)
 
     implementation(Libraries.dagger)
+    implementation(Libraries.daggerAndroid)
+    implementation(Libraries.daggerAndroidSupport)
     kapt(Libraries.daggerCompiler)
     kapt(Libraries.daggerAndroidProcessor)
 }
