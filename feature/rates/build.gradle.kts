@@ -23,9 +23,17 @@ dependencies {
     implementation(Libraries.kotlinStdlib)
     implementation(Libraries.kotlinReflect)
 
+    implementation(SupportLibraries.material)
+    implementation(SupportLibraries.appCompat)
+    implementation(SupportLibraries.constraint)
+    implementation(SupportLibraries.recyclerView)
+    implementation(SupportLibraries.coreKtx)
+
     implementation(Libraries.dagger)
     implementation(Libraries.daggerAndroid)
     implementation(Libraries.daggerAndroidSupport)
     kapt(Libraries.daggerCompiler)
     kapt(Libraries.daggerAndroidProcessor)
+
+    implementation(Libraries.retrofit)
 }

@@ -1,4 +1,4 @@
-package dmitrii.zhuchkov.testrates.navigation
+package dmitry.zhuchkov.component.navigation
 
 /**
  *   Created by Dmitry Zhuchkov

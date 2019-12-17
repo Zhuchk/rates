@@ -2,6 +2,7 @@ package dmitrii.zhuchkov.testrates.di
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
+import dmitrii.zhuchkov.testrates.di.feature.RatesModule
 import dmitrii.zhuchkov.testrates.di.feature.SplashModule
 import dmitry.zhuchkov.feature.rates.ui.RatesFragment
 import dmitry.zhuchkov.feature.splash.ui.SplashFragment
@@ -15,9 +16,9 @@ interface LaunchActivityModule {
 
     @FragmentScope
     @ContributesAndroidInjector(modules = [SplashModule::class])
-    fun getSplashFragment(): SplashFragment
+    fun provideSplashFragment(): SplashFragment
 
     @FragmentScope
-    @ContributesAndroidInjector
-    fun getMainFragment(): RatesFragment
+    @ContributesAndroidInjector(modules = [RatesModule::class])
+    fun provideMainFragment(): RatesFragment
 }

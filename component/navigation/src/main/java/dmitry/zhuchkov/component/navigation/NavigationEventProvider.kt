@@ -1,6 +1,5 @@
 package dmitry.zhuchkov.component.navigation
 
-import dmitrii.zhuchkov.testrates.navigation.SingleLiveEvent
 import javax.inject.Inject
 
 /**

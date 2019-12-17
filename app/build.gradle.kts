@@ -39,12 +39,18 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
 
         getByName("debug") {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 }
@@ -56,7 +62,7 @@ dependencies {
     implementation(project((":component.navigation")))
     implementation(project((":feature.rates")))
     implementation(project((":feature.splash")))
-    
+
     implementation(SupportLibraries.material)
     implementation(SupportLibraries.constraint)
     implementation(SupportLibraries.recyclerView)
@@ -72,4 +78,12 @@ dependencies {
     implementation(Libraries.rxKotlin)
 
     implementation(Libraries.gson)
+
+    implementation(Libraries.okhttp)
+    implementation(Libraries.okhttpUrlconnection)
+    implementation(Libraries.okhttpLogging)
+
+    implementation(Libraries.retrofit)
+    implementation(Libraries.retrofitAdapterRxJava)
+    implementation(Libraries.retrofitConverterGson)
 }

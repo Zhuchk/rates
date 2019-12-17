@@ -35,9 +35,7 @@ class LaunchActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        navigationEventProvider.navigationEvent.observe(this, Observer {
-            navigate(it)
-        })
+        navigationEventProvider.navigationEvent.observe(this, Observer(this::navigate))
 
         navController.addOnDestinationChangedListener { _, _, _ ->
             hideSoftKeyboard()

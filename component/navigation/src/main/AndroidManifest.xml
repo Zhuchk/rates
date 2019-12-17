@@ -1,2 +1,1 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="dmitry.zhuchkov.component.navigation"/>
+<manifest package="dmitry.zhuchkov.component.navigation" />
