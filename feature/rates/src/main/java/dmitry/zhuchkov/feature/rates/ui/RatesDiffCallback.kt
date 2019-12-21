@@ -9,23 +9,23 @@ import dmitry.zhuchkov.feature.rates.domain.entity.CurrencyRate
  *
  */
 class RatesDiffCallback(
-    private val oldList: List<CurrencyRate>,
-    private val newList: List<CurrencyRate>
+	private val oldList: List<CurrencyRate>,
+	private val newList: List<CurrencyRate>
 ) : DiffUtil.Callback() {
 
-    override fun getOldListSize(): Int = oldList.size
+	override fun getOldListSize(): Int = oldList.size
 
-    override fun getNewListSize(): Int = newList.size
+	override fun getNewListSize(): Int = newList.size
 
-    override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
-        oldList[oldItemPosition].name == newList[newItemPosition].name
+	override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
+		oldList[oldItemPosition].name == newList[newItemPosition].name
 
-    override fun areContentsTheSame(oldPosition: Int, newPosition: Int): Boolean =
-        oldList[oldPosition] == newList[newPosition]
+	override fun areContentsTheSame(oldPosition: Int, newPosition: Int): Boolean =
+		oldList[oldPosition] == newList[newPosition]
 
-    @Nullable
-    override fun getChangePayload(oldItemPosition: Int, newItemPosition: Int): Any? =
-        RatesChangePayLoad(newList[newItemPosition].value)
+	@Nullable
+	override fun getChangePayload(oldItemPosition: Int, newItemPosition: Int): Any? =
+		RatesChangePayLoad(newList[newItemPosition].value)
 }
 
-data class RatesChangePayLoad(val amounte: Double)
+data class RatesChangePayLoad(val amount: Double)

@@ -18,16 +18,15 @@ import dmitry.zhuchkov.feature.rates.domain.repository.RatesRepository
 @Module(includes = [RatesApiModule::class])
 interface RatesModule {
 
-    @Binds
-    @FragmentScope
-    fun bindRatesRepository(repository: RatesRepositoryImpl): RatesRepository
+	@Binds
+	@FragmentScope
+	fun bindRatesRepository(repository: RatesRepositoryImpl): RatesRepository
 
-    @Binds
-    @FragmentScope
-    fun bindBaseCurrencyRepository(repository: BaseCurrencyRepositoryImpl): BaseCurrencyRepository
+	@Binds
+	@FragmentScope
+	fun bindBaseCurrencyRepository(repository: BaseCurrencyRepositoryImpl): BaseCurrencyRepository
 
-
-    @Binds
-    @FragmentScope
-    fun bindRatesApiDataSource(dataSource: RatesApiDataSourceImpl): RatesApiDataSource
+	@Binds
+	@FragmentScope
+	fun bindRatesApiDataSource(dataSource: RatesApiDataSourceImpl): RatesApiDataSource
 }

@@ -8,10 +8,10 @@ import javax.inject.Inject
  */
 interface NavigationEventProvider {
 
-    val navigationEvent: SingleLiveEvent<NavigationEvent>
+	val navigationEvent: SingleLiveEvent<NavigationEvent>
 }
 
-class NavigationEventProviderImpl @Inject constructor(): NavigationEventProvider {
+class NavigationEventProviderImpl @Inject constructor() : NavigationEventProvider {
 
-    override val navigationEvent: SingleLiveEvent<NavigationEvent> = SingleLiveEvent()
+	override val navigationEvent: SingleLiveEvent<NavigationEvent> = SingleLiveEvent()
 }

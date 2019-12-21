@@ -10,13 +10,13 @@ import javax.inject.Inject
  *
  */
 class BaseCurrencyRepositoryImpl @Inject constructor(
-    private val dataSource: BaseCurrencyDataSource
-): BaseCurrencyRepository {
+	private val dataSource: BaseCurrencyDataSource
+) : BaseCurrencyRepository {
 
-    override fun get(): CurrencyRate? =
-        dataSource.get()
+	override fun get(): CurrencyRate? =
+		dataSource.get()
 
-    override fun set(baseCurrency: CurrencyRate) {
-        dataSource.set(baseCurrency)
-    }
+	override fun set(baseCurrency: CurrencyRate) {
+		dataSource.set(baseCurrency)
+	}
 }

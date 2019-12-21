@@ -15,16 +15,16 @@ import dmitrii.zhuchkov.testrates.navigation.RouterImpl
 @Module
 abstract class NavigationModule {
 
-    @Module
-    companion object {
+	@Module
+	companion object {
 
-        @Provides
-        @JvmStatic
-        fun provideRouter(provider: NavigationEventProvider): Router =
-            RouterImpl(provider)
-    }
+		@Provides
+		@JvmStatic
+		fun provideRouter(provider: NavigationEventProvider): Router =
+			RouterImpl(provider)
+	}
 
-    @Binds
-    @AppScope
-    abstract fun bindNavigationActionProvider(provider: NavigationEventProviderImpl): NavigationEventProvider
+	@Binds
+	@AppScope
+	abstract fun bindNavigationActionProvider(provider: NavigationEventProviderImpl): NavigationEventProvider
 }

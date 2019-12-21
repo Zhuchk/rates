@@ -10,22 +10,23 @@ import javax.inject.Inject
  *
  */
 class GetRatesUseCase @Inject constructor(
-    private val repository: RatesRepository
+	private val repository: RatesRepository
 ) {
 
-    private companion object {
-        const val RATE_FOR_BASE_CURRENCY = 1.0
-    }
-    operator fun invoke(currencyCode: String, amount: Double): Single<List<CurrencyRate>> =
-        repository.get(currencyCode)
-            .map {
-                listOf(createBase(currencyCode, amount)) + it
-            }
+	private companion object {
+		const val RATE_FOR_BASE_CURRENCY = 1.0
+	}
 
-    private fun createBase(currencyCode: String, amount: Double): CurrencyRate =
-        CurrencyRate(
-            name = currencyCode,
-            value = amount,
-            rate = RATE_FOR_BASE_CURRENCY
-        )
+	operator fun invoke(currencyCode: String, amount: Double): Single<List<CurrencyRate>> =
+		repository.get(currencyCode)
+			.map {
+				listOf(createBase(currencyCode, amount)) + it
+			}
+
+	private fun createBase(currencyCode: String, amount: Double): CurrencyRate =
+		CurrencyRate(
+			name = currencyCode,
+			value = amount,
+			rate = RATE_FOR_BASE_CURRENCY
+		)
 }

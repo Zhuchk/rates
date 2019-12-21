@@ -6,5 +6,5 @@ package dmitry.zhuchkov.feature.splash.navigation
  */
 interface SplashRouter {
 
-    fun openMainScreen()
+	fun openMainScreen()
 }

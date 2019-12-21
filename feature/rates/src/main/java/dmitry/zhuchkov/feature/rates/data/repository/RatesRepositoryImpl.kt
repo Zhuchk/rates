@@ -12,13 +12,13 @@ import javax.inject.Inject
  *
  */
 class RatesRepositoryImpl @Inject constructor(
-    private val dataSource: RatesApiDataSource,
-    private val converter: GetLatestResponseConverter
+	private val dataSource: RatesApiDataSource,
+	private val converter: GetLatestResponseConverter
 ) : RatesRepository {
 
-    override fun get(currencyCode: String): Single<List<CurrencyRate>> =
-        dataSource.getRates(currencyCode)
-            .map {
-                converter.convert(it)
-            }
+	override fun get(currencyCode: String): Single<List<CurrencyRate>> =
+		dataSource.getRates(currencyCode)
+			.map {
+				converter.convert(it)
+			}
 }

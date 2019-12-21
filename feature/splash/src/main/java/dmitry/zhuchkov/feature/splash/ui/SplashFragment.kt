@@ -12,8 +12,8 @@ import javax.inject.Inject
  */
 class SplashFragment : MVPFragment(), SplashView {
 
-    override val layoutRes: Int = R.layout.splash_fragment
+	override val layoutRes: Int = R.layout.splash_fragment
 
-    @Inject
-    lateinit var presenter: SplashPresenter
+	@Inject
+	lateinit var presenter: SplashPresenter
 }

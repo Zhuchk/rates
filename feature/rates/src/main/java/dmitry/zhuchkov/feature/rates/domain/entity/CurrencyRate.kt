@@ -5,7 +5,7 @@ package dmitry.zhuchkov.feature.rates.domain.entity
  *
  */
 data class CurrencyRate(
-    val name: String,
-    val value: Double,
-    val rate: Double = 1.0
+	val name: String,
+	val value: Double,
+	val rate: Double = 1.0
 )

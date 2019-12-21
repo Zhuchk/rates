@@ -8,7 +8,7 @@ import dmitry.zhuchkov.feature.rates.domain.entity.CurrencyRate
  */
 interface BaseCurrencyRepository {
 
-    fun get(): CurrencyRate?
+	fun get(): CurrencyRate?
 
-    fun set(baseCurrency: CurrencyRate)
+	fun set(baseCurrency: CurrencyRate)
 }

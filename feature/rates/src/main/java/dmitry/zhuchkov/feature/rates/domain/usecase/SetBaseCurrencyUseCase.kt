@@ -9,10 +9,10 @@ import javax.inject.Inject
  *
  */
 class SetBaseCurrencyUseCase @Inject constructor(
-    private val repository: BaseCurrencyRepository
+	private val repository: BaseCurrencyRepository
 ) {
 
-    operator fun invoke(baseCurrency: CurrencyRate) {
-        repository.set(baseCurrency)
-    }
+	operator fun invoke(baseCurrency: CurrencyRate) {
+		repository.set(baseCurrency)
+	}
 }

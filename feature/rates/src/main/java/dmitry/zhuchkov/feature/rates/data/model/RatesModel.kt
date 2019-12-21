@@ -5,7 +5,7 @@ package dmitry.zhuchkov.feature.rates.data.model
  *
  */
 data class RatesModel(
-    val base: String,
-    val date: String,
-    val rates: Map<String, Double>
+	val base: String,
+	val date: String,
+	val rates: Map<String, Double>
 )

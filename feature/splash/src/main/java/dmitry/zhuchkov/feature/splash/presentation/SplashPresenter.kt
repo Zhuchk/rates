@@ -13,19 +13,19 @@ import javax.inject.Inject
  *
  */
 class SplashPresenter @Inject constructor(
-    private val router: SplashRouter
+	private val router: SplashRouter
 ) : MVPPresenter<SplashView>() {
 
-    private companion object {
-        const val DELAY_SEC = 1L
-    }
+	private companion object {
+		const val DELAY_SEC = 1L
+	}
 
-    override fun onCreateView() {
-        Completable.timer(DELAY_SEC, TimeUnit.SECONDS)
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe {
-                router.openMainScreen()
-            }
-            .addTo(compositeDisposable)
-    }
+	override fun onCreateView() {
+		Completable.timer(DELAY_SEC, TimeUnit.SECONDS)
+			.observeOn(AndroidSchedulers.mainThread())
+			.subscribe {
+				router.openMainScreen()
+			}
+			.addTo(compositeDisposable)
+	}
 }

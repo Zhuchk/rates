@@ -9,20 +9,20 @@ import javax.inject.Inject
  *
  */
 class GetBaseCurrencyUseCase @Inject constructor(
-    private val repository: BaseCurrencyRepository
+	private val repository: BaseCurrencyRepository
 ) {
 
-    private companion object {
-        const val BASE_CURRENCY_CODE = "EUR"
-        const val BASE_RATE = 1.0
-    }
+	private companion object {
+		const val BASE_CURRENCY_CODE = "EUR"
+		const val BASE_RATE = 1.0
+	}
 
-    operator fun invoke(): CurrencyRate =
-        repository.get() ?: getDefaultCurrency()
+	operator fun invoke(): CurrencyRate =
+		repository.get() ?: getDefaultCurrency()
 
-    private fun getDefaultCurrency(): CurrencyRate =
-        CurrencyRate(
-            name = BASE_CURRENCY_CODE,
-            value = BASE_RATE
-        )
+	private fun getDefaultCurrency(): CurrencyRate =
+		CurrencyRate(
+			name = BASE_CURRENCY_CODE,
+			value = BASE_RATE
+		)
 }

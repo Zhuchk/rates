@@ -12,16 +12,16 @@ import dmitrii.zhuchkov.testrates.di.network.NetworkModule
  *
  */
 @Module(
-    includes = [
-        AndroidSupportInjectionModule::class,
-        NavigationModule::class,
-        NetworkModule::class,
-        DataModule::class
-    ]
+	includes = [
+		AndroidSupportInjectionModule::class,
+		NavigationModule::class,
+		NetworkModule::class,
+		DataModule::class
+	]
 )
 interface AppModule {
 
-    @ActivityScope
-    @ContributesAndroidInjector(modules = [LaunchActivityModule::class])
-    fun provideLaunchActivity(): LaunchActivity
+	@ActivityScope
+	@ContributesAndroidInjector(modules = [LaunchActivityModule::class])
+	fun provideLaunchActivity(): LaunchActivity
 }

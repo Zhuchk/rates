@@ -6,20 +6,20 @@ import io.reactivex.disposables.CompositeDisposable
  * Created by Dmitrii on 14.12.2019
  *
  */
-abstract class MVPPresenter<T: MVPView> {
+abstract class MVPPresenter<T : MVPView> {
 
-    val compositeDisposable = CompositeDisposable()
+	val compositeDisposable = CompositeDisposable()
 
-    var viewState: T? = null
+	var viewState: T? = null
 
-    open fun onCreateView() = Unit
+	open fun onCreateView() = Unit
 
-    fun attachView(viewState: MVPView?) {
-        this.viewState = viewState as? T
-        onCreateView()
-    }
+	fun attachView(viewState: MVPView?) {
+		this.viewState = viewState as? T
+		onCreateView()
+	}
 
-    fun disposeOnDestroy() {
-        compositeDisposable.clear()
-    }
+	fun disposeOnDestroy() {
+		compositeDisposable.clear()
+	}
 }

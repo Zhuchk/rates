@@ -13,14 +13,14 @@ import javax.inject.Singleton
  */
 @AppScope
 @Component(modules = [
-    AppModule::class
+	AppModule::class
 ])
 interface AppComponent : AndroidInjector<App> {
 
-    @Singleton
-    @Component.Factory
-    interface AppFactory {
+	@Singleton
+	@Component.Factory
+	interface AppFactory {
 
-        fun create(@BindsInstance context: Context): AppComponent
-    }
+		fun create(@BindsInstance context: Context): AppComponent
+	}
 }

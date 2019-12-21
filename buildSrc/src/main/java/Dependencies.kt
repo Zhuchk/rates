@@ -16,16 +16,11 @@ object Versions {
 	const val recyclerViewVersion = "1.0.0"
 	const val legacySupportVersion = "1.0.0"
 	const val materialVersion = "1.1.0-alpha05"
-	const val coreUIVersion = "1.0.0"
-	const val cardViewVersion = "1.0.0"
-	const val annotationVersion = "1.0.0"
-	const val browserVersion = "1.0.0"
 	const val coreKtxVersion = "1.1.0"
 	const val multidex = "2.0.1"
 	const val navVersion = "2.1.0"
 
 	// Arch
-	const val roomVersion = "2.0.0"
 	const val lifecycleVersion = "2.0.0"
 	const val support = "26.1.0"
 	const val arch = "1.0.0"
@@ -56,12 +51,7 @@ object Versions {
 	val barista = "2.7.0"
 	val uiautomator = "2.1.3"
 
-	val dataBinding = "3.3.2"
 	val constraintLayout = "1.1.3"
-
-	// Other
-	val stetho = "1.5.1"
-	val leakCanary = "1.6.3"
 
 	// Glide
 	val glide = "4.10.0"
@@ -101,24 +91,6 @@ object Libraries {
 	val timber = "com.jakewharton.timber:timber:${Versions.timber}"
 	val gson = "com.google.code.gson:gson:${Versions.gson}"
 
-	// Google
-	val databindingCompiler = "androidx.databinding:databinding-compiler:${Versions.dataBinding}"
-
-	// Arch
-	val roomRuntime = "androidx.room:room-runtime:${Versions.roomVersion}"
-	val roomRx = "androidx.room:room-rxjava2:${Versions.roomVersion}"
-	val roomCompiler = "androidx.room:room-compiler:${Versions.roomVersion}"
-	val lifecycle = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycleVersion}"
-
-	// Stetho
-	val stetho = "com.facebook.stetho:stetho:${Versions.stetho}"
-	val stethoOkHttp = "com.facebook.stetho:stetho-okhttp3:${Versions.stetho}"
-
-	// Leak Canary
-	val leakCanary = "com.squareup.leakcanary:leakcanary-android:${Versions.leakCanary}"
-	val leakCanaryNoOp = "com.squareup.leakcanary:leakcanary-android-no-op:${Versions.leakCanary}"
-	val leakCanarySupport = "com.squareup.leakcanary:leakcanary-support-fragment:${Versions.leakCanary}"
-
 	// Glide
 	val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
 	val glideAnnotationProcessor = "com.github.bumptech.glide:compiler:${Versions.glide}"
@@ -130,10 +102,6 @@ object SupportLibraries {
 	val supportV4 = "androidx.legacy:legacy-support-v4:${Versions.legacySupportVersion}"
 	val material = "com.google.android.material:material:${Versions.materialVersion}"
 	val constraint = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
-	val coreUI = "androidx.legacy:legacy-support-core-ui:${Versions.coreUIVersion}"
-	val cardView = "androidx.cardview:cardview:${Versions.cardViewVersion}"
-	val supportAnnotations = "androidx.annotation:annotation:${Versions.annotationVersion}"
-	val browser = "androidx.browser:browser:${Versions.browserVersion}"
 	val coreKtx = "androidx.core:core-ktx:${Versions.coreKtxVersion}"
 	val multidex = "androidx.multidex:multidex:${Versions.multidex}"
 
@@ -155,16 +123,11 @@ object TestLibraries {
 	val barista = "com.schibsted.spain:barista:${Versions.barista}"
 	val uiAutomator = "com.android.support.test.uiautomator:uiautomator-v18:${Versions.uiautomator}"
 	val orchestrator = "androidx.test:orchestrator:${Versions.testRunner}"
-
-	val roomTesting = "androidx.room:room-testing:${Versions.roomVersion}"
 }
 
 object ArchitectureLibraries {
 	const val lifecycleExt = "android.arch.lifecycle:extensions:${Versions.arch}"
 	const val lifeCycleRunTime = "android.arch.lifecycle:runtime:${Versions.arch}"
 	const val lifecycleCompiler = "android.arch.lifecycle:compiler:${Versions.arch}"
-	const val roomRT = "android.arch.persistence.room:runtime:${Versions.arch}"
-	const val roomRx = "android.arch.persistence.room:rxjava2:${Versions.arch}"
-	const val roomCompiler = "android.arch.persistence.room:compiler:${Versions.arch}"
 }
 

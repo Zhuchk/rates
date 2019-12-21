@@ -9,5 +9,5 @@ import io.reactivex.Single
  */
 interface RatesRepository {
 
-    fun get(currencyCode: String): Single<List<CurrencyRate>>
+	fun get(currencyCode: String): Single<List<CurrencyRate>>
 }

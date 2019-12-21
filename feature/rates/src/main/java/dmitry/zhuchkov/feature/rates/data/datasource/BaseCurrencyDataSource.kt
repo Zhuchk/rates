@@ -9,19 +9,19 @@ import javax.inject.Inject
  */
 interface BaseCurrencyDataSource {
 
-    fun get(): CurrencyRate?
+	fun get(): CurrencyRate?
 
-    fun set(baseCurrency: CurrencyRate)
+	fun set(baseCurrency: CurrencyRate)
 }
 
 class BaseCurrencyDataSourceImpl @Inject constructor() : BaseCurrencyDataSource {
 
-    private var baseCurrency: CurrencyRate? = null
+	private var baseCurrency: CurrencyRate? = null
 
-    override fun get(): CurrencyRate? =
-        baseCurrency
+	override fun get(): CurrencyRate? =
+		baseCurrency
 
-    override fun set(baseCurrency: CurrencyRate) {
-        this.baseCurrency = baseCurrency
-    }
+	override fun set(baseCurrency: CurrencyRate) {
+		this.baseCurrency = baseCurrency
+	}
 }

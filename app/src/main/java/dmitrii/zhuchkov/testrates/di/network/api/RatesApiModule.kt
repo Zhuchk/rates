@@ -14,8 +14,8 @@ import retrofit2.Retrofit
 @Module
 class RatesApiModule {
 
-    @Provides
-    @FragmentScope
-    fun provideRatesApi(@RatesApiQualifier retrofit: Retrofit): RatesApi =
-        retrofit.create(RatesApi::class.java)
+	@Provides
+	@FragmentScope
+	fun provideRatesApi(@RatesApiQualifier retrofit: Retrofit): RatesApi =
+		retrofit.create(RatesApi::class.java)
 }

@@ -19,24 +19,23 @@ import retrofit2.converter.gson.GsonConverterFactory
 @Module
 class NetworkModule {
 
-    @Provides
-    @AppScope
-    fun provideOkHttpClient(): OkHttpClient =
-        OkHttpClient.Builder()
-            .build()
+	@Provides
+	@AppScope
+	fun provideOkHttpClient(): OkHttpClient =
+		OkHttpClient.Builder()
+			.build()
 
+	@Provides
+	@AppScope
+	@RatesApiQualifier
+	fun provideRatesRetrofit(okHttpClient: OkHttpClient, context: Context): Retrofit =
+		createRetrofit(context.getString(R.string.rates_base_url), okHttpClient)
 
-    @Provides
-    @AppScope
-    @RatesApiQualifier
-    fun provideRatesRetrofit(okHttpClient: OkHttpClient, context: Context): Retrofit =
-        createRetrofit(context.getString(R.string.rates_base_url), okHttpClient)
-
-    private fun createRetrofit(baseUrl: String, okHttpClient: OkHttpClient) =
-        Retrofit.Builder()
-            .baseUrl(baseUrl)
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(okHttpClient)
-            .build()
+	private fun createRetrofit(baseUrl: String, okHttpClient: OkHttpClient) =
+		Retrofit.Builder()
+			.baseUrl(baseUrl)
+			.addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
+			.addConverterFactory(GsonConverterFactory.create())
+			.client(okHttpClient)
+			.build()
 }

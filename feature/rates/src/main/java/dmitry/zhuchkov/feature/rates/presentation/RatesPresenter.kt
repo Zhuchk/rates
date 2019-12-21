@@ -18,79 +18,79 @@ import javax.inject.Inject
  *
  */
 class RatesPresenter @Inject constructor(
-    private val getRatesUseCase: GetRatesUseCase,
-    private val getBaseCurrencyUseCase: GetBaseCurrencyUseCase,
-    private val setBaseCurrencyUseCase: SetBaseCurrencyUseCase,
-    private val calculateRatesUseCase: CalculateRatesUseCase
+	private val getRatesUseCase: GetRatesUseCase,
+	private val getBaseCurrencyUseCase: GetBaseCurrencyUseCase,
+	private val setBaseCurrencyUseCase: SetBaseCurrencyUseCase,
+	private val calculateRatesUseCase: CalculateRatesUseCase
 ) : MVPPresenter<RatesView>() {
 
-    private companion object {
-        const val BASE_ITEM_RATE = 1.0
-    }
+	private companion object {
+		const val BASE_ITEM_RATE = 1.0
+	}
 
-    private var ratesList: List<CurrencyRate> = emptyList()
+	private var ratesList: List<CurrencyRate> = emptyList()
 
-    override fun onCreateView() {
-        Flowable.interval(1, TimeUnit.SECONDS)
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeBy(
-                onNext = {
-                    viewState?.showProgress()
-                    loadRates()
-                },
-                onError = {
-                   handleError(it)
-                }
-            )
-            .addTo(compositeDisposable)
-    }
+	override fun onCreateView() {
+		Flowable.interval(1, TimeUnit.SECONDS)
+			.observeOn(AndroidSchedulers.mainThread())
+			.subscribeBy(
+				onNext = {
+					viewState?.showProgress()
+					loadRates()
+				},
+				onError = {
+					handleError(it)
+				}
+			)
+			.addTo(compositeDisposable)
+	}
 
-    private fun loadRates() {
-        getRatesUseCase(getBaseCurrencyUseCase().name, getBaseCurrencyUseCase().value)
-            .filter {
-                it.firstOrNull()?.name == getBaseCurrencyUseCase().name
-            }
-            .map { calculateRatesUseCase(it, getBaseCurrencyUseCase(), getBaseCurrencyUseCase()) }
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeBy(
-                onSuccess = { ratesList ->
-                    this.ratesList = ratesList
+	private fun loadRates() {
+		getRatesUseCase(getBaseCurrencyUseCase().name, getBaseCurrencyUseCase().value)
+			.filter {
+				it.firstOrNull()?.name == getBaseCurrencyUseCase().name
+			}
+			.map { calculateRatesUseCase(it, getBaseCurrencyUseCase(), getBaseCurrencyUseCase()) }
+			.observeOn(AndroidSchedulers.mainThread())
+			.subscribeBy(
+				onSuccess = { ratesList ->
+					this.ratesList = ratesList
 
-                    viewState?.hideProgress()
-                    viewState?.showRates(ratesList)
-                },
-                onError = {
-                    handleError(it)
-                }
-            )
-            .addTo(compositeDisposable)
-    }
+					viewState?.hideProgress()
+					viewState?.showRates(ratesList)
+				},
+				onError = {
+					handleError(it)
+				}
+			)
+			.addTo(compositeDisposable)
+	}
 
-    private fun handleError(throwable: Throwable) {
-        viewState?.hideProgress()
-        viewState?.showError(throwable.localizedMessage)
-    }
+	private fun handleError(throwable: Throwable) {
+		viewState?.hideProgress()
+		viewState?.showError(throwable.localizedMessage)
+	}
 
-    fun onItemSelected(currencyRate: CurrencyRate) {
-        setBaseCurrencyUseCase(currencyRate)
+	fun onItemSelected(currencyRate: CurrencyRate) {
+		setBaseCurrencyUseCase(currencyRate)
 
-        viewState?.scrollToTop()
-        viewState?.showProgress()
-    }
+		viewState?.scrollToTop()
+		viewState?.showProgress()
+	}
 
-    fun onCurrentRateChanged(value: String) {
-        if (getBaseCurrencyUseCase().value == value.toDoubleOrNull()) {
-            return
-        }
+	fun onCurrentRateChanged(value: String) {
+		if (getBaseCurrencyUseCase().value == value.toDoubleOrNull()) {
+			return
+		}
 
-        setBaseCurrencyUseCase(
-            getBaseCurrencyUseCase().copy(
-                value = value.toDoubleOrNull() ?: BASE_ITEM_RATE
-            )
-        )
+		setBaseCurrencyUseCase(
+			getBaseCurrencyUseCase().copy(
+				value = value.toDoubleOrNull() ?: BASE_ITEM_RATE
+			)
+		)
 
-        ratesList =
-            calculateRatesUseCase(ratesList, getBaseCurrencyUseCase(), getBaseCurrencyUseCase())
-        viewState?.showRates(ratesList)
-    }
+		ratesList =
+			calculateRatesUseCase(ratesList, getBaseCurrencyUseCase(), getBaseCurrencyUseCase())
+		viewState?.showRates(ratesList)
+	}
 }

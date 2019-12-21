@@ -21,50 +21,50 @@ import javax.inject.Inject
  */
 class RatesFragment : MVPFragment(), RatesView {
 
-    override val layoutRes: Int = R.layout.rates_fragment
+	override val layoutRes: Int = R.layout.rates_fragment
 
-    private val adapter = RatesAdapter()
+	private val adapter = RatesAdapter()
 
-    @Inject
-    lateinit var presenter: RatesPresenter
+	@Inject
+	lateinit var presenter: RatesPresenter
 
-    override fun setupView() {
-        adapter.onItemClicked = presenter::onItemSelected
-        adapter.onRateChanged = presenter::onCurrentRateChanged
-        rateRecycler.adapter = adapter
-    }
+	override fun setupView() {
+		adapter.onItemClicked = presenter::onItemSelected
+		adapter.onRateChanged = presenter::onCurrentRateChanged
+		rateRecycler.adapter = adapter
+	}
 
-    override fun showRates(list: List<CurrencyRate>) {
-        dispatchDiff(adapter.items, list)
-    }
+	override fun showRates(list: List<CurrencyRate>) {
+		dispatchDiff(adapter.items, list)
+	}
 
-    override fun scrollToTop() {
-        rateRecycler.smoothScrollToPosition(0)
-    }
+	override fun scrollToTop() {
+		rateRecycler.smoothScrollToPosition(0)
+	}
 
-    override fun showError(message: String) {
-        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
-    }
+	override fun showError(message: String) {
+		Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+	}
 
-    override fun showProgress() {
-        progressBar.isVisible = true
-        rateRecycler.isVisible = false
-    }
+	override fun showProgress() {
+		progressBar.isVisible = true
+		rateRecycler.isVisible = false
+	}
 
-    override fun hideProgress() {
-        progressBar.isVisible = false
-        rateRecycler.isVisible = true
-    }
+	override fun hideProgress() {
+		progressBar.isVisible = false
+		rateRecycler.isVisible = true
+	}
 
-    private fun dispatchDiff(oldItems: List<CurrencyRate>, newItems: List<CurrencyRate>) {
-        Single.fromCallable {
-            val diffCallback = RatesDiffCallback(oldItems, newItems)
-            DiffUtil.calculateDiff(diffCallback)
-        }.subscribeOn(Schedulers.computation())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeBy {
-                adapter.items = newItems
-                it.dispatchUpdatesTo(adapter)
-            }
-    }
+	private fun dispatchDiff(oldItems: List<CurrencyRate>, newItems: List<CurrencyRate>) {
+		Single.fromCallable {
+			val diffCallback = RatesDiffCallback(oldItems, newItems)
+			DiffUtil.calculateDiff(diffCallback)
+		}.subscribeOn(Schedulers.computation())
+			.observeOn(AndroidSchedulers.mainThread())
+			.subscribeBy {
+				adapter.items = newItems
+				it.dispatchUpdatesTo(adapter)
+			}
+	}
 }

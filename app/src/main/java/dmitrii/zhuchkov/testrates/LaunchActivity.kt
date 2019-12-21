@@ -21,44 +21,44 @@ import javax.inject.Inject
 
 class LaunchActivity : BaseActivity() {
 
-    @Inject
-    lateinit var navigationEventProvider: NavigationEventProvider
+	@Inject
+	lateinit var navigationEventProvider: NavigationEventProvider
 
-    @Inject
-    override lateinit var androidInjector: DispatchingAndroidInjector<Any>
+	@Inject
+	override lateinit var androidInjector: DispatchingAndroidInjector<Any>
 
-    override var contentLayout = R.layout.launch_activity
+	override var contentLayout = R.layout.launch_activity
 
-    private val navController: NavController
-        get() = findNavController(R.id.navigation_host)
+	private val navController: NavController
+		get() = findNavController(R.id.navigation_host)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
 
-        navigationEventProvider.navigationEvent.observe(this, Observer(this::navigate))
+		navigationEventProvider.navigationEvent.observe(this, Observer(this::navigate))
 
-        navController.addOnDestinationChangedListener { _, _, _ ->
-            hideSoftKeyboard()
-        }
-    }
+		navController.addOnDestinationChangedListener { _, _, _ ->
+			hideSoftKeyboard()
+		}
+	}
 
-    private fun navigate(event: NavigationEvent) {
-        when (event) {
-            is NavigationExit -> finish()
-            is NavigationUp -> navController.navigateUp()
-            is NavDirections -> navController.navigate(event)
+	private fun navigate(event: NavigationEvent) {
+		when (event) {
+			is NavigationExit -> finish()
+			is NavigationUp   -> navController.navigateUp()
+			is NavDirections  -> navController.navigate(event)
 
-            else              -> throw IllegalArgumentException("unknown navigation event")
-        }
-    }
+			else              -> throw IllegalArgumentException("unknown navigation event")
+		}
+	}
 
-    override fun onBackPressed() {
-        val fragment = supportFragmentManager.findFragmentById(R.id.navigation_host)
+	override fun onBackPressed() {
+		val fragment = supportFragmentManager.findFragmentById(R.id.navigation_host)
 
-        fragment?.childFragmentManager?.fragments?.forEach {
-            if (it is MVPFragment && !it.onBackPressed()) {
-                super.onBackPressed()
-            }
-        }
-    }
+		fragment?.childFragmentManager?.fragments?.forEach {
+			if (it is MVPFragment && !it.onBackPressed()) {
+				super.onBackPressed()
+			}
+		}
+	}
 }

@@ -14,11 +14,11 @@ import dmitry.zhuchkov.feature.splash.ui.SplashFragment
 @Module
 interface LaunchActivityModule {
 
-    @FragmentScope
-    @ContributesAndroidInjector(modules = [SplashModule::class])
-    fun provideSplashFragment(): SplashFragment
+	@FragmentScope
+	@ContributesAndroidInjector(modules = [SplashModule::class])
+	fun provideSplashFragment(): SplashFragment
 
-    @FragmentScope
-    @ContributesAndroidInjector(modules = [RatesModule::class])
-    fun provideMainFragment(): RatesFragment
+	@FragmentScope
+	@ContributesAndroidInjector(modules = [RatesModule::class])
+	fun provideRatesFragment(): RatesFragment
 }

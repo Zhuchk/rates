@@ -13,24 +13,24 @@ import kotlinx.android.synthetic.main.rate_list_item.view.*
  *
  */
 class EditableRateItemViewHolder(
-    parent: ViewGroup
+	parent: ViewGroup
 ) : RecyclerView.ViewHolder(parent.inflate(R.layout.rate_list_item)) {
 
-    fun bind(
-        currencyRate: CurrencyRate,
-        onRateChanged: ((rate: String) -> Unit)?
-    ) {
-        itemView.currencyCode.text = currencyRate.name
-        itemView.currencyValue.setText(currencyRate.value.toString())
+	fun bind(
+		currencyRate: CurrencyRate,
+		onRateChanged: ((rate: String) -> Unit)?
+	) {
+		itemView.currencyCode.text = currencyRate.name
+		itemView.currencyValue.setText(currencyRate.value.toString())
 
-        itemView.currencyValue.textChangeListener(
-            afterTextChanged = {
-                onRateChanged?.invoke(it)
-            }
-        )
-    }
+		itemView.currencyValue.textChangeListener(
+			afterTextChanged = {
+				onRateChanged?.invoke(it)
+			}
+		)
+	}
 
-    fun updateAmount(amount: Double) {
-        itemView.currencyValue.setText(amount.toString())
-    }
+	fun updateAmount(amount: Double) {
+		itemView.currencyValue.setText(amount.toString())
+	}
 }

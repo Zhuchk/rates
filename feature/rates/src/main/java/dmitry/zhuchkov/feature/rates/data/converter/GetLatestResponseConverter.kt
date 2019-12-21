@@ -10,13 +10,13 @@ import javax.inject.Inject
  */
 class GetLatestResponseConverter @Inject constructor() {
 
-    fun convert(response: RatesModel): List<CurrencyRate> =
-        response.rates
-            .map { (name, value) ->
-                CurrencyRate(
-                    name = name,
-                    value = value,
-                    rate = value
-                )
-            }
+	fun convert(response: RatesModel): List<CurrencyRate> =
+		response.rates
+			.map { (name, value) ->
+				CurrencyRate(
+					name = name,
+					value = value,
+					rate = value
+				)
+			}
 }

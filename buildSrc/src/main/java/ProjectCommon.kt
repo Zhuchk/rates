@@ -11,47 +11,48 @@ import org.gradle.kotlin.dsl.dependencies
 private const val mavenBaseUrl = "https://mvnrepository.com"
 
 fun Project.applyCommonAndroidLibraries() {
-    dependencies {
-        implementation(Libraries.rxKotlin)
-        implementation(Libraries.rxAndroid)
+	dependencies {
+		implementation(Libraries.rxKotlin)
+		implementation(Libraries.rxAndroid)
 
-        implementation(Libraries.timber)
+		implementation(Libraries.timber)
 
-        implementation(Libraries.kotlinStdlib)
-        implementation(Libraries.kotlinReflect)
+		implementation(Libraries.kotlinStdlib)
+		implementation(Libraries.kotlinReflect)
 
-        implementation(Libraries.dagger)
-        kapt(Libraries.daggerCompiler)
-        implementation(Libraries.daggerAndroid)
-        implementation(Libraries.daggerAndroidSupport)
-        kapt(Libraries.daggerAndroidProcessor)
+		implementation(Libraries.dagger)
+		kapt(Libraries.daggerCompiler)
+		implementation(Libraries.daggerAndroid)
+		implementation(Libraries.daggerAndroidSupport)
+		kapt(Libraries.daggerAndroidProcessor)
 
-        implementation(SupportLibraries.appCompat)
+		implementation(SupportLibraries.appCompat)
 
-        testImplementation(TestLibraries.kotlinMockito)
-        testImplementation(TestLibraries.junit)
-    }
+		testImplementation(TestLibraries.kotlinMockito)
+		testImplementation(TestLibraries.junit)
+	}
 }
 
 fun Project.applyTestLibraries() {
-    dependencies {
-        testImplementation(TestLibraries.kotlinMockito)
-        testImplementation(TestLibraries.junit)
-    }
+	dependencies {
+		testImplementation(TestLibraries.kotlinMockito)
+		testImplementation(TestLibraries.junit)
+	}
 }
 
 fun applyMainRepositories(handler: RepositoryHandler) = with(handler) {
-    maven {
-        setUrl("$mavenBaseUrl/artifact/")
-    }
-    jcenter()
-    google()
+	maven {
+		setUrl("$mavenBaseUrl/artifact/")
+	}
+	jcenter()
+	google()
 }
+
 private fun DependencyHandler.implementation(dependencyNotation: Any): Dependency? =
-    add("implementation", dependencyNotation)
+	add("implementation", dependencyNotation)
 
 private fun DependencyHandler.kapt(dependencyNotation: Any): Dependency? =
-    add("kapt", dependencyNotation)
+	add("kapt", dependencyNotation)
 
 private fun DependencyHandler.testImplementation(dependencyNotation: Any): Dependency? =
-    add("testImplementation", dependencyNotation)
+	add("testImplementation", dependencyNotation)

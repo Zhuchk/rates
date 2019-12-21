@@ -16,54 +16,54 @@ import javax.inject.Inject
  * Created by Dmitrii on 12.12.2019
  *
  */
-abstract class MVPFragment: Fragment(), HasAndroidInjector {
+abstract class MVPFragment : Fragment(), HasAndroidInjector {
 
-    private val presenters: MutableList<MVPPresenter<*>> = mutableListOf()
+	private val presenters: MutableList<MVPPresenter<*>> = mutableListOf()
 
-    open fun onBackPressed(): Boolean = false
+	open fun onBackPressed(): Boolean = false
 
-    open fun setupView() = Unit
+	open fun setupView() = Unit
 
-    abstract val layoutRes: Int
+	abstract val layoutRes: Int
 
-    @Inject
-    lateinit var androidInjector: DispatchingAndroidInjector<Any>
+	@Inject
+	lateinit var androidInjector: DispatchingAndroidInjector<Any>
 
-    override fun androidInjector(): AndroidInjector<Any> =
-        androidInjector
+	override fun androidInjector(): AndroidInjector<Any> =
+		androidInjector
 
-    override fun onAttach(context: Context) {
-        AndroidSupportInjection.inject(this)
-        super.onAttach(context)
-    }
+	override fun onAttach(context: Context) {
+		AndroidSupportInjection.inject(this)
+		super.onAttach(context)
+	}
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        super.onCreateView(inflater, container, savedInstanceState).let {
-            inflater.inflate(layoutRes, container, false)
-        }
+	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+		super.onCreateView(inflater, container, savedInstanceState).let {
+			inflater.inflate(layoutRes, container, false)
+		}
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+		super.onViewCreated(view, savedInstanceState)
 
-        setupView()
+		setupView()
 
-        javaClass.fields.forEach { field ->
-            val presenter = field.get(this) as? MVPPresenter<out MVPView>
+		javaClass.fields.forEach { field ->
+			val presenter = field.get(this) as? MVPPresenter<out MVPView>
 
-            if (presenter != null) {
-                presenters.add(presenter)
-                presenter.attachView(this as? MVPView)
-            }
-        }
-    }
+			if (presenter != null) {
+				presenters.add(presenter)
+				presenter.attachView(this as? MVPView)
+			}
+		}
+	}
 
-    override fun onDestroy() {
-        presenters.forEach {
-            it.attachView(null)
-            it.disposeOnDestroy()
-        }
-        presenters.clear()
+	override fun onDestroy() {
+		presenters.forEach {
+			it.attachView(null)
+			it.disposeOnDestroy()
+		}
+		presenters.clear()
 
-        super.onDestroy()
-    }
+		super.onDestroy()
+	}
 }

@@ -10,11 +10,10 @@ import javax.inject.Inject
  *
  */
 class SplashRouterImpl @Inject constructor(
-    private val navigationEventProvider: NavigationEventProvider
+	private val navigationEventProvider: NavigationEventProvider
 ) : SplashRouter {
 
-    override fun openMainScreen() {
-        navigationEventProvider.navigationEvent.value = ToMainScreenEvent()
-
-    }
+	override fun openMainScreen() {
+		navigationEventProvider.navigationEvent.value = ToMainScreenEvent()
+	}
 }

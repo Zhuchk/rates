@@ -11,14 +11,14 @@ import javax.inject.Inject
  */
 interface RatesApiDataSource {
 
-    fun getRates(currencyCode: String): Single<RatesModel>
+	fun getRates(currencyCode: String): Single<RatesModel>
 }
 
 class RatesApiDataSourceImpl @Inject constructor(
-    private val api: RatesApi
+	private val api: RatesApi
 ) : RatesApiDataSource {
 
-    override fun getRates(currencyCode: String): Single<RatesModel> =
-        api.getRates(currencyCode)
-            .subscribeOn(Schedulers.io())
+	override fun getRates(currencyCode: String): Single<RatesModel> =
+		api.getRates(currencyCode)
+			.subscribeOn(Schedulers.io())
 }

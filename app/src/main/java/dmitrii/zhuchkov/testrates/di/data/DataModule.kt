@@ -13,7 +13,7 @@ import dmitry.zhuchkov.feature.rates.data.datasource.BaseCurrencyDataSourceImpl
 @Module
 interface DataModule {
 
-    @Binds
-    @AppScope
-    fun bindBaseCurrencyDataSource(dataSource: BaseCurrencyDataSourceImpl): BaseCurrencyDataSource
+	@Binds
+	@AppScope
+	fun bindBaseCurrencyDataSource(dataSource: BaseCurrencyDataSourceImpl): BaseCurrencyDataSource
 }

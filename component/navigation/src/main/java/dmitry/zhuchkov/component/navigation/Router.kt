@@ -6,5 +6,5 @@ package dmitry.zhuchkov.component.navigation
  */
 interface Router {
 
-    fun navigate(event: NavigationEvent)
+	fun navigate(event: NavigationEvent)
 }

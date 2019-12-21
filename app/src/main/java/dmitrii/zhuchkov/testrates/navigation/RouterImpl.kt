@@ -9,10 +9,10 @@ import dmitry.zhuchkov.component.navigation.Router
  *
  */
 class RouterImpl(
-    private val provider: NavigationEventProvider
-): Router {
+	private val provider: NavigationEventProvider
+) : Router {
 
-    override fun navigate(event: NavigationEvent) {
-        provider.navigationEvent.value = event
-    }
+	override fun navigate(event: NavigationEvent) {
+		provider.navigationEvent.value = event
+	}
 }

@@ -7,10 +7,10 @@ import android.app.Activity
  *
  */
 fun Activity.hideSoftKeyboard() {
-    val decorView = window.decorView
+	val decorView = window.decorView
 
-    inputMethodManager?.apply {
-        hideSoftInputFromWindow(decorView.windowToken, 0)
-        hideSoftInputFromWindow(decorView.applicationWindowToken, 0)
-    }
+	inputMethodManager?.apply {
+		hideSoftInputFromWindow(decorView.windowToken, 0)
+		hideSoftInputFromWindow(decorView.applicationWindowToken, 0)
+	}
 }

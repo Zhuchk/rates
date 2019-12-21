@@ -9,21 +9,21 @@ import javax.inject.Inject
  */
 class CalculateRatesUseCase @Inject constructor() {
 
-    operator fun invoke(
-        rates: List<CurrencyRate>,
-        oldBase: CurrencyRate,
-        newBase: CurrencyRate
-    ): List<CurrencyRate> {
-        val multiplier = oldBase.rate / newBase.rate
+	operator fun invoke(
+		rates: List<CurrencyRate>,
+		oldBase: CurrencyRate,
+		newBase: CurrencyRate
+	): List<CurrencyRate> {
+		val multiplier = oldBase.rate / newBase.rate
 
-        return rates
-            .map { currencyRate ->
-                val rate = currencyRate.rate / multiplier
+		return rates
+			.map { currencyRate ->
+				val rate = currencyRate.rate / multiplier
 
-                currencyRate.copy(
-                    rate = rate,
-                    value = rate * newBase.value
-                )
-            }
-    }
+				currencyRate.copy(
+					rate = rate,
+					value = rate * newBase.value
+				)
+			}
+	}
 }

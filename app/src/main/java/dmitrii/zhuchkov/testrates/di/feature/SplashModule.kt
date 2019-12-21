@@ -12,6 +12,6 @@ import dmitry.zhuchkov.feature.splash.navigation.SplashRouter
 @Module
 interface SplashModule {
 
-    @Binds
-    fun bindSplashRouter(router: SplashRouterImpl): SplashRouter
+	@Binds
+	fun bindSplashRouter(router: SplashRouterImpl): SplashRouter
 }
