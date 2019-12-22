@@ -18,7 +18,7 @@ class RatesDiffCallback(
 	override fun getNewListSize(): Int = newList.size
 
 	override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
-		oldList[oldItemPosition].name == newList[newItemPosition].name
+		oldList[oldItemPosition].code == newList[newItemPosition].code
 
 	override fun areContentsTheSame(oldPosition: Int, newPosition: Int): Boolean =
 		oldList[oldPosition] == newList[newPosition]

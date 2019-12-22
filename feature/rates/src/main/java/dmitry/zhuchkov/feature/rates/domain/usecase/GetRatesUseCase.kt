@@ -25,7 +25,7 @@ class GetRatesUseCase @Inject constructor(
 
 	private fun createBase(currencyCode: String, amount: Double): CurrencyRate =
 		CurrencyRate(
-			name = currencyCode,
+			code = currencyCode,
 			value = amount,
 			rate = RATE_FOR_BASE_CURRENCY
 		)

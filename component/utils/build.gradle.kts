@@ -14,13 +14,6 @@ android {
 }
 
 dependencies {
-    implementation(Libraries.rxKotlin)
-    implementation(Libraries.rxAndroid)
-
     implementation(Libraries.kotlinStdlib)
     implementation(Libraries.kotlinReflect)
-
-    implementation(ArchitectureLibraries.lifecycleExt)
-    implementation(ArchitectureLibraries.lifeCycleRunTime)
-    kapt(ArchitectureLibraries.lifecycleCompiler)
 }

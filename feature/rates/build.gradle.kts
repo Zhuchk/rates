@@ -16,6 +16,7 @@ android {
 dependencies {
     implementation(project((":component.mvp")))
     implementation(project((":component.ui")))
+    implementation(project((":component.utils")))
 
     implementation(Libraries.rxKotlin)
     implementation(Libraries.rxAndroid)
@@ -36,4 +37,7 @@ dependencies {
     kapt(Libraries.daggerAndroidProcessor)
 
     implementation(Libraries.retrofit)
+    implementation(Libraries.jodaMoney)
+
+	implementation(Libraries.glide)
 }

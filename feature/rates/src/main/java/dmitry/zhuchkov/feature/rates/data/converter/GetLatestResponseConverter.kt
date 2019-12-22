@@ -2,6 +2,8 @@ package dmitry.zhuchkov.feature.rates.data.converter
 
 import dmitry.zhuchkov.feature.rates.data.model.RatesModel
 import dmitry.zhuchkov.feature.rates.domain.entity.CurrencyRate
+import org.joda.money.CurrencyUnit
+import java.util.*
 import javax.inject.Inject
 
 /**
@@ -14,9 +16,17 @@ class GetLatestResponseConverter @Inject constructor() {
 		response.rates
 			.map { (name, value) ->
 				CurrencyRate(
-					name = name,
+					code = name,
 					value = value,
-					rate = value
+					rate = value,
+					fullName = getDisplayedName(name)
 				)
 			}
+
+	private fun getDisplayedName(code: String): String =
+		try {
+			CurrencyUnit.of(code).toCurrency().getDisplayName(Locale.getDefault())
+		} catch (exception: Exception) {
+			""
+		}
 }

@@ -46,9 +46,9 @@ class RatesPresenter @Inject constructor(
 	}
 
 	private fun loadRates() {
-		getRatesUseCase(getBaseCurrencyUseCase().name, getBaseCurrencyUseCase().value)
+		getRatesUseCase(getBaseCurrencyUseCase().code, getBaseCurrencyUseCase().value)
 			.filter {
-				it.firstOrNull()?.name == getBaseCurrencyUseCase().name
+				it.firstOrNull()?.code == getBaseCurrencyUseCase().code
 			}
 			.map { calculateRatesUseCase(it, getBaseCurrencyUseCase(), getBaseCurrencyUseCase()) }
 			.observeOn(AndroidSchedulers.mainThread())

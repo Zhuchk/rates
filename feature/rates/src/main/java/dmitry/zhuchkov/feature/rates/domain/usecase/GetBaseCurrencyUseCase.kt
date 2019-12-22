@@ -22,7 +22,7 @@ class GetBaseCurrencyUseCase @Inject constructor(
 
 	private fun getDefaultCurrency(): CurrencyRate =
 		CurrencyRate(
-			name = BASE_CURRENCY_CODE,
+			code = BASE_CURRENCY_CODE,
 			value = BASE_RATE
 		)
 }
