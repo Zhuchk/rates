@@ -24,7 +24,8 @@ class EditableRateItemViewHolder(
 	) {
 		itemView.currencyCode.text = currencyRate.code
 		itemView.fullName.text = currencyRate.fullName
-		itemView.currencyValue.setText(currencyRate.value.toString())
+		val amount = parent.context.getString(R.string.amountFormat).format(currencyRate.value)
+		itemView.currencyValue.setText(amount)
 
 		Glide.with(parent.context)
 			.load(CurrencyFlagProvider.getFlagByCode(currencyRate.code))
