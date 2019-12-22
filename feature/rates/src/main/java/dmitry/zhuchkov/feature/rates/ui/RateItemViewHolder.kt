@@ -20,6 +20,7 @@ class RateItemViewHolder(
 		onItemClicked: ((item: CurrencyRate, position: Int) -> Unit)?
 	) {
 		itemView.currencyCode.text = currencyRate.name
+		itemView.currencyValue.isFocusable = false
 		itemView.currencyValue.setText(currencyRate.value.toString())
 
 		itemView.setOnClickListener {

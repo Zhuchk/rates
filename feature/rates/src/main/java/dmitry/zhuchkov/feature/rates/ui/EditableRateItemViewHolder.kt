@@ -29,8 +29,4 @@ class EditableRateItemViewHolder(
 			}
 		)
 	}
-
-	fun updateAmount(amount: Double) {
-		itemView.currencyValue.setText(amount.toString())
-	}
 }

@@ -54,7 +54,6 @@ class RatesAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 			.firstOrNull() as? RatesChangePayLoad)?.let { payLoad ->
 			when (holder) {
 				is RateItemViewHolder         -> holder.updateAmount(payLoad.amount)
-				is EditableRateItemViewHolder -> holder.updateAmount(payLoad.amount)
 			}
 		} ?: super.onBindViewHolder(holder, position, payloads)
 	}

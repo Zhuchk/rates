@@ -3,7 +3,9 @@ package dmitry.zhuchkov.feature.rates.ui
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.RecyclerView
 import dmitry.zhuchkov.component.mvp.MVPFragment
+import dmitry.zhuchkov.component.ui.hideSoftKeyboard
 import dmitry.zhuchkov.feature.rates.R
 import dmitry.zhuchkov.feature.rates.domain.entity.CurrencyRate
 import dmitry.zhuchkov.feature.rates.presentation.RatesPresenter
@@ -31,7 +33,17 @@ class RatesFragment : MVPFragment(), RatesView {
 	override fun setupView() {
 		adapter.onItemClicked = presenter::onItemSelected
 		adapter.onRateChanged = presenter::onCurrentRateChanged
+
 		rateRecycler.adapter = adapter
+		rateRecycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+			override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+				if (newState == RecyclerView.SCROLL_STATE_DRAGGING) {
+					requireActivity().hideSoftKeyboard()
+				}
+			}
+		})
+
+		rateRecycler.itemAnimator = null
 	}
 
 	override fun showRates(list: List<CurrencyRate>) {
@@ -48,19 +60,20 @@ class RatesFragment : MVPFragment(), RatesView {
 
 	override fun showProgress() {
 		progressBar.isVisible = true
-		rateRecycler.isVisible = false
+		rateRecycler.isClickable = false
 	}
 
 	override fun hideProgress() {
 		progressBar.isVisible = false
-		rateRecycler.isVisible = true
+		rateRecycler.isClickable = true
 	}
 
 	private fun dispatchDiff(oldItems: List<CurrencyRate>, newItems: List<CurrencyRate>) {
 		Single.fromCallable {
 			val diffCallback = RatesDiffCallback(oldItems, newItems)
 			DiffUtil.calculateDiff(diffCallback)
-		}.subscribeOn(Schedulers.computation())
+		}
+			.subscribeOn(Schedulers.computation())
 			.observeOn(AndroidSchedulers.mainThread())
 			.subscribeBy {
 				adapter.items = newItems
