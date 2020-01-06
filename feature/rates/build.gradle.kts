@@ -40,4 +40,6 @@ dependencies {
     implementation(Libraries.jodaMoney)
 
 	implementation(Libraries.glide)
+
+    testImplementation(project(":component.test"))
 }
