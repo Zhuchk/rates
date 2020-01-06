@@ -1,6 +1,7 @@
 package dmitry.zhuchkov.feature.rates.presentation
 
 import dmitry.zhuchkov.component.mvp.MVPPresenter
+import dmitry.zhuchkov.component.utils.toDoubleOrDefault
 import dmitry.zhuchkov.feature.rates.domain.entity.CurrencyRate
 import dmitry.zhuchkov.feature.rates.domain.usecase.CalculateRatesUseCase
 import dmitry.zhuchkov.feature.rates.domain.usecase.GetBaseCurrencyUseCase
@@ -79,13 +80,13 @@ class RatesPresenter @Inject constructor(
 	}
 
 	fun onCurrentRateChanged(value: String) {
-		if (getBaseCurrencyUseCase().value == value.toDoubleOrNull()) {
+		if (getBaseCurrencyUseCase().value == value.toDoubleOrDefault()) {
 			return
 		}
 
 		setBaseCurrencyUseCase(
 			getBaseCurrencyUseCase().copy(
-				value = value.toDoubleOrNull() ?: BASE_ITEM_RATE
+				value = value.toDoubleOrDefault() ?: BASE_ITEM_RATE
 			)
 		)
 
