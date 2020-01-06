@@ -1,6 +1,6 @@
 package dmitry.zhuchkov.feature.rates.data.repository
 
-import dmitry.zhuchkov.feature.rates.data.converter.GetLatestResponseConverter
+import dmitry.zhuchkov.feature.rates.data.converter.RatesConverter
 import dmitry.zhuchkov.feature.rates.data.datasource.RatesApiDataSource
 import dmitry.zhuchkov.feature.rates.domain.entity.CurrencyRate
 import dmitry.zhuchkov.feature.rates.domain.repository.RatesRepository
@@ -13,7 +13,7 @@ import javax.inject.Inject
  */
 class RatesRepositoryImpl @Inject constructor(
 	private val dataSource: RatesApiDataSource,
-	private val converter: GetLatestResponseConverter
+	private val converter: RatesConverter
 ) : RatesRepository {
 
 	override fun get(currencyCode: String): Single<List<CurrencyRate>> =

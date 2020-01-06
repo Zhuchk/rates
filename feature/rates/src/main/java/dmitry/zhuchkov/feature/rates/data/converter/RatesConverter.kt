@@ -10,7 +10,7 @@ import javax.inject.Inject
  * Created by Dmitrii on 15.12.2019
  *
  */
-class GetLatestResponseConverter @Inject constructor() {
+class RatesConverter @Inject constructor() {
 
 	fun convert(response: RatesModel): List<CurrencyRate> =
 		response.rates
