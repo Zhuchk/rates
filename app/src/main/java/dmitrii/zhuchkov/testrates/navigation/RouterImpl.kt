@@ -1,8 +1,8 @@
 package dmitrii.zhuchkov.testrates.navigation
 
-import dmitry.zhuchkov.component.navigation.NavigationEvent
-import dmitry.zhuchkov.component.navigation.NavigationEventProvider
-import dmitry.zhuchkov.component.navigation.Router
+import dmitrii.zhuchkov.component.navigation.NavigationEvent
+import dmitrii.zhuchkov.component.navigation.NavigationEventProvider
+import dmitrii.zhuchkov.component.navigation.Router
 
 /**
  * Created by Dmitrii on 11.12.2019

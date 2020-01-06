@@ -1,8 +1,8 @@
 package dmitrii.zhuchkov.testrates.navigation.feature
 
 import dmitrii.zhuchkov.testrates.navigation.ToMainScreenEvent
-import dmitry.zhuchkov.component.navigation.NavigationEventProvider
-import dmitry.zhuchkov.feature.splash.navigation.SplashRouter
+import dmitrii.zhuchkov.component.navigation.NavigationEventProvider
+import dmitrii.zhuchkov.feature.splash.navigation.SplashRouter
 import javax.inject.Inject
 
 /**

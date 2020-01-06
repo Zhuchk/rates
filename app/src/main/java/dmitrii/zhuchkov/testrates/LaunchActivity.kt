@@ -10,13 +10,13 @@ import androidx.navigation.NavController
 import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 import dagger.android.DispatchingAndroidInjector
-import dmitry.zhuchkov.component.navigation.NavigationEvent
-import dmitry.zhuchkov.component.navigation.NavigationEventProvider
+import dmitrii.zhuchkov.component.navigation.NavigationEvent
+import dmitrii.zhuchkov.component.navigation.NavigationEventProvider
 import dmitrii.zhuchkov.testrates.navigation.NavigationExit
 import dmitrii.zhuchkov.testrates.navigation.NavigationUp
-import dmitry.zhuchkov.component.mvp.MVPFragment
-import dmitry.zhuchkov.component.ui.BaseActivity
-import dmitry.zhuchkov.component.ui.hideSoftKeyboard
+import dmitrii.zhuchkov.component.mvp.MVPFragment
+import dmitrii.zhuchkov.component.ui.BaseActivity
+import dmitrii.zhuchkov.component.ui.hideSoftKeyboard
 import javax.inject.Inject
 
 class LaunchActivity : BaseActivity() {

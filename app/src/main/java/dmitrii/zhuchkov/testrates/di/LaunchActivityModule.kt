@@ -4,8 +4,8 @@ import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import dmitrii.zhuchkov.testrates.di.feature.RatesModule
 import dmitrii.zhuchkov.testrates.di.feature.SplashModule
-import dmitry.zhuchkov.feature.rates.ui.RatesFragment
-import dmitry.zhuchkov.feature.splash.ui.SplashFragment
+import dmitrii.zhuchkov.feature.rates.ui.RatesFragment
+import dmitrii.zhuchkov.feature.splash.ui.SplashFragment
 
 /**
  * Created by Dmitrii on 11.12.2019

@@ -3,9 +3,9 @@ package dmitrii.zhuchkov.testrates.di
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
-import dmitry.zhuchkov.component.navigation.NavigationEventProvider
-import dmitry.zhuchkov.component.navigation.NavigationEventProviderImpl
-import dmitry.zhuchkov.component.navigation.Router
+import dmitrii.zhuchkov.component.navigation.NavigationEventProvider
+import dmitrii.zhuchkov.component.navigation.NavigationEventProviderImpl
+import dmitrii.zhuchkov.component.navigation.Router
 import dmitrii.zhuchkov.testrates.navigation.RouterImpl
 
 /**

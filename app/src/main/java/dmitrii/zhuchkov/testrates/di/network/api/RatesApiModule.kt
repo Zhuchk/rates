@@ -4,7 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dmitrii.zhuchkov.testrates.di.FragmentScope
 import dmitrii.zhuchkov.testrates.di.network.qualifiers.RatesApiQualifier
-import dmitry.zhuchkov.feature.rates.data.datasource.RatesApi
+import dmitrii.zhuchkov.feature.rates.data.datasource.RatesApi
 import retrofit2.Retrofit
 
 /**
