@@ -57,6 +57,10 @@ class RatesPresenter @Inject constructor(
 			.subscribeBy(
 				onSuccess = { ratesList ->
 					this.ratesList = ratesList
+
+					viewState?.hideProgress()
+					viewState?.showRates(ratesList)
+
 				},
 				onError = {
 					handleError(it)
