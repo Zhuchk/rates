@@ -42,8 +42,10 @@ class GetRatesUseCaseTest {
 		)
 
 		val expectedResult = listOf(
-			CurrencyRate(code = code, value = amount, rate = BigDecimal.valueOf(1.0))
-		) + currencyList
+			CurrencyRate(code = code, value = amount, rate = BigDecimal.valueOf(1.0), fullName = "Euro"),
+			CurrencyRate(code = "USD", value = BigDecimal.valueOf(1.2), rate = BigDecimal.valueOf(1.2), fullName = "US Dollar"),
+			CurrencyRate(code = "RUB", value = BigDecimal.valueOf(0.25), rate = BigDecimal.valueOf(1.2), fullName = "Russian Ruble")
+		)
 
 		whenever(repository.get(code)).thenReturn(Single.just(currencyList))
 

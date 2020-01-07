@@ -2,9 +2,7 @@ package dmitrii.zhuchkov.feature.rates.data.converter
 
 import dmitrii.zhuchkov.feature.rates.data.model.RatesModel
 import dmitrii.zhuchkov.feature.rates.domain.entity.CurrencyRate
-import org.joda.money.CurrencyUnit
 import java.math.BigDecimal
-import java.util.*
 import javax.inject.Inject
 
 /**
@@ -20,14 +18,7 @@ class RatesConverter @Inject constructor() {
 					code = name,
 					value = BigDecimal.valueOf(value),
 					rate = BigDecimal.valueOf(value),
-					fullName = getDisplayedName(name)
+					fullName = ""
 				)
 			}
-
-	private fun getDisplayedName(code: String): String =
-		try {
-			CurrencyUnit.of(code).toCurrency().getDisplayName(Locale.getDefault())
-		} catch (exception: Exception) {
-			""
-		}
 }

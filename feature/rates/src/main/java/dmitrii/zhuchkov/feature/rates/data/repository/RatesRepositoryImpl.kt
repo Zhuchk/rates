@@ -5,6 +5,7 @@ import dmitrii.zhuchkov.feature.rates.data.datasource.RatesApiDataSource
 import dmitrii.zhuchkov.feature.rates.domain.entity.CurrencyRate
 import dmitrii.zhuchkov.feature.rates.domain.repository.RatesRepository
 import io.reactivex.Single
+import java.math.BigDecimal
 import javax.inject.Inject
 
 /**

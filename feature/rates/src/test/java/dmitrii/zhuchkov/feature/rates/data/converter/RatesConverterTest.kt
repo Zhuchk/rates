@@ -30,13 +30,13 @@ class RatesConverterTest {
 				code = "EUR",
 				value = BigDecimal.valueOf(11.0),
 				rate = BigDecimal.valueOf(11.0),
-				fullName = "Euro"
+				fullName = ""
 			),
 			CurrencyRate(
 				code = "USD",
 				value = BigDecimal.valueOf(15.0),
 				rate = BigDecimal.valueOf(15.0),
-				fullName = "US Dollar"
+				fullName = ""
 			)
 		)
 
