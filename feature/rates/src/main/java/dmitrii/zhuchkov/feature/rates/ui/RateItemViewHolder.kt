@@ -8,6 +8,7 @@ import dmitrii.zhuchkov.component.utils.CurrencyFlagProvider
 import dmitrii.zhuchkov.feature.rates.R
 import dmitrii.zhuchkov.feature.rates.domain.entity.CurrencyRate
 import kotlinx.android.synthetic.main.rate_list_item.view.*
+import java.math.BigDecimal
 
 /**
  * Created by Dmitrii on 15.12.2019
@@ -37,7 +38,7 @@ class RateItemViewHolder(
 		}
 	}
 
-	fun updateAmount(rate: Double) {
-		itemView.currencyValue.setText(rate.toString())
+	fun updateAmount(rate: BigDecimal) {
+		itemView.currencyValue.setText(rate.toPlainString())
 	}
 }

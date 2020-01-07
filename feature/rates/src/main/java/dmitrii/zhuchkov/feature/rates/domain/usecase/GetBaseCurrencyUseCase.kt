@@ -2,6 +2,7 @@ package dmitrii.zhuchkov.feature.rates.domain.usecase
 
 import dmitrii.zhuchkov.feature.rates.domain.entity.CurrencyRate
 import dmitrii.zhuchkov.feature.rates.domain.repository.BaseCurrencyRepository
+import java.math.BigDecimal
 import javax.inject.Inject
 
 /**
@@ -14,6 +15,7 @@ class GetBaseCurrencyUseCase @Inject constructor(
 
 	private companion object {
 		const val BASE_CURRENCY_CODE = "EUR"
+		const val BASE_VALUE = 1.0
 		const val BASE_RATE = 1.0
 	}
 
@@ -23,6 +25,7 @@ class GetBaseCurrencyUseCase @Inject constructor(
 	private fun getDefaultCurrency(): CurrencyRate =
 		CurrencyRate(
 			code = BASE_CURRENCY_CODE,
-			value = BASE_RATE
+			value = BigDecimal.valueOf(BASE_VALUE),
+			rate = BigDecimal.valueOf(BASE_RATE)
 		)
 }

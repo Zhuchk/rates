@@ -3,6 +3,7 @@ package dmitrii.zhuchkov.feature.rates.data.converter
 import dmitrii.zhuchkov.feature.rates.data.model.RatesModel
 import dmitrii.zhuchkov.feature.rates.domain.entity.CurrencyRate
 import org.joda.money.CurrencyUnit
+import java.math.BigDecimal
 import java.util.*
 import javax.inject.Inject
 
@@ -17,8 +18,8 @@ class RatesConverter @Inject constructor() {
 			.map { (name, value) ->
 				CurrencyRate(
 					code = name,
-					value = value,
-					rate = value,
+					value = BigDecimal.valueOf(value),
+					rate = BigDecimal.valueOf(value),
 					fullName = getDisplayedName(name)
 				)
 			}

@@ -3,6 +3,7 @@ package dmitrii.zhuchkov.feature.rates.domain.usecase
 import dmitrii.zhuchkov.feature.rates.domain.entity.CurrencyRate
 import dmitrii.zhuchkov.feature.rates.domain.repository.RatesRepository
 import io.reactivex.Single
+import java.math.BigDecimal
 import javax.inject.Inject
 
 /**
@@ -17,16 +18,16 @@ class GetRatesUseCase @Inject constructor(
 		const val RATE_FOR_BASE_CURRENCY = 1.0
 	}
 
-	operator fun invoke(currencyCode: String, amount: Double): Single<List<CurrencyRate>> =
+	operator fun invoke(currencyCode: String, amount: BigDecimal): Single<List<CurrencyRate>> =
 		repository.get(currencyCode)
 			.map {
 				listOf(createBase(currencyCode, amount)) + it
 			}
 
-	private fun createBase(currencyCode: String, amount: Double): CurrencyRate =
+	private fun createBase(currencyCode: String, amount: BigDecimal): CurrencyRate =
 		CurrencyRate(
 			code = currencyCode,
 			value = amount,
-			rate = RATE_FOR_BASE_CURRENCY
+			rate = BigDecimal.valueOf(RATE_FOR_BASE_CURRENCY)
 		)
 }

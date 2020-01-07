@@ -3,6 +3,7 @@ package dmitrii.zhuchkov.feature.rates.ui
 import androidx.annotation.Nullable
 import androidx.recyclerview.widget.DiffUtil
 import dmitrii.zhuchkov.feature.rates.domain.entity.CurrencyRate
+import java.math.BigDecimal
 
 /**
  * Created by Dmitrii on 15.12.2019
@@ -28,4 +29,4 @@ class RatesDiffCallback(
 		RatesChangePayLoad(newList[newItemPosition].value)
 }
 
-data class RatesChangePayLoad(val amount: Double)
+data class RatesChangePayLoad(val amount: BigDecimal)

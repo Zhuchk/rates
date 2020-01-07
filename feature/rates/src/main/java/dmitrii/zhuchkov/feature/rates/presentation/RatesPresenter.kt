@@ -11,6 +11,7 @@ import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
+import java.math.BigDecimal
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
@@ -56,9 +57,6 @@ class RatesPresenter @Inject constructor(
 			.subscribeBy(
 				onSuccess = { ratesList ->
 					this.ratesList = ratesList
-
-					viewState?.hideProgress()
-					viewState?.showRates(ratesList)
 				},
 				onError = {
 					handleError(it)
@@ -80,13 +78,14 @@ class RatesPresenter @Inject constructor(
 	}
 
 	fun onCurrentRateChanged(value: String) {
-		if (getBaseCurrencyUseCase().value == value.toDoubleOrDefault()) {
+		val newValue = BigDecimal.valueOf(value.toDoubleOrDefault(BASE_ITEM_RATE))
+		if (getBaseCurrencyUseCase().value == newValue) {
 			return
 		}
 
 		setBaseCurrencyUseCase(
 			getBaseCurrencyUseCase().copy(
-				value = value.toDoubleOrDefault() ?: BASE_ITEM_RATE
+				value = newValue
 			)
 		)
 
