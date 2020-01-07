@@ -14,6 +14,7 @@ import io.reactivex.Single
 import org.junit.After
 import org.junit.Rule
 import org.junit.Test
+import java.math.BigDecimal
 
 /**
  * Created by Dmitrii on 06.01.2020
@@ -44,8 +45,8 @@ class RatesRepositoryTest {
 		val convertedModel = listOf(
 			CurrencyRate(
 				code = "USD",
-				value = 1.0,
-				rate = 1.0,
+				value = BigDecimal.valueOf(1.0),
+				rate = BigDecimal.valueOf(1.0),
 				fullName = ""
 			)
 		)

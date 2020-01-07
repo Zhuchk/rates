@@ -80,7 +80,7 @@ class RatesPresenter @Inject constructor(
 
 	fun onItemSelected(currencyRate: CurrencyRate) {
 		unsubscribeFromRates()
-		moveItemToTop(currencyRate)
+		ratesList = ratesList.moveItemToTop(currencyRate)
 
 		setBaseCurrencyUseCase(currencyRate)
 
@@ -89,14 +89,14 @@ class RatesPresenter @Inject constructor(
 		subscribeOnRates()
 	}
 
-	private fun moveItemToTop(currencyRate: CurrencyRate) {
-		val newList = ratesList
+	private fun List<CurrencyRate>.moveItemToTop(currencyRate: CurrencyRate): List<CurrencyRate> {
+		val newList = this
 			.filter { it.code != currencyRate.code }
 			.toMutableList()
 
 		newList.add(0, currencyRate)
 
-		ratesList = newList
+		return newList
 	}
 
 	private fun unsubscribeFromRates() {

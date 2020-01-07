@@ -12,6 +12,7 @@ import io.reactivex.Single
 import org.junit.After
 import org.junit.Rule
 import org.junit.Test
+import java.math.BigDecimal
 
 /**
  * Created by Dmitrii on 06.01.2020
@@ -33,15 +34,15 @@ class GetRatesUseCaseTest {
 	@Test
 	fun `WHEN useCase called EXPECT return rates with correct base item`() {
 		val code = "EUR"
-		val amount = 10.0
+		val amount = BigDecimal.valueOf(10.0)
 
 		val currencyList = listOf(
-			CurrencyRate(code = "USD", value = 1.2),
-			CurrencyRate(code = "RUB", value = 0.25)
+			CurrencyRate(code = "USD", value = BigDecimal.valueOf(1.2), rate = BigDecimal.valueOf(1.2)),
+			CurrencyRate(code = "RUB", value = BigDecimal.valueOf(0.25), rate = BigDecimal.valueOf(1.2))
 		)
 
 		val expectedResult = listOf(
-			CurrencyRate(code = code, value = amount, rate = 1.0)
+			CurrencyRate(code = code, value = amount, rate = BigDecimal.valueOf(1.0))
 		) + currencyList
 
 		whenever(repository.get(code)).thenReturn(Single.just(currencyList))

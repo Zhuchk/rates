@@ -4,6 +4,7 @@ import dmitrii.zhuchkov.feature.rates.data.model.RatesModel
 import dmitrii.zhuchkov.feature.rates.domain.entity.CurrencyRate
 import org.junit.Assert.*
 import org.junit.Test
+import java.math.BigDecimal
 
 /**
  * Created by Dmitrii on 06.01.2020
@@ -27,14 +28,14 @@ class RatesConverterTest {
 		val expectedResult = listOf(
 			CurrencyRate(
 				code = "EUR",
-				value = 11.0,
-				rate = 11.0,
+				value = BigDecimal.valueOf(11.0),
+				rate = BigDecimal.valueOf(11.0),
 				fullName = "Euro"
 			),
 			CurrencyRate(
 				code = "USD",
-				value = 15.0,
-				rate = 15.0,
+				value = BigDecimal.valueOf(15.0),
+				rate = BigDecimal.valueOf(15.0),
 				fullName = "US Dollar"
 			)
 		)
@@ -55,8 +56,8 @@ class RatesConverterTest {
 		val expectedResult = listOf(
 			CurrencyRate(
 				code = "UNKNOWN",
-				value = 19.0,
-				rate = 19.0,
+				value = BigDecimal.valueOf(19.0),
+				rate = BigDecimal.valueOf(19.0),
 				fullName = ""
 			)
 		)

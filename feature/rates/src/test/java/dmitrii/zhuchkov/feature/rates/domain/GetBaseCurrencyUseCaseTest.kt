@@ -10,6 +10,7 @@ import dmitrii.zhuchkov.feature.rates.domain.usecase.GetBaseCurrencyUseCase
 import junit.framework.Assert.*
 import org.junit.After
 import org.junit.Test
+import java.math.BigDecimal
 
 /**
  * Created by Dmitrii on 06.01.2020
@@ -27,7 +28,11 @@ class GetBaseCurrencyUseCaseTest {
 
 	@Test
 	fun `WHEN dataSource returns null EXPECT default currency returns`() {
-		val expectedResult = CurrencyRate(code = "EUR", value = 1.0)
+		val expectedResult = CurrencyRate(
+			code = "EUR",
+			value = BigDecimal.valueOf(1.0),
+			rate = BigDecimal.valueOf(1.0)
+		)
 		whenever(repository.get()).thenReturn(null)
 
 		val actualResult = useCase.invoke()
@@ -41,7 +46,8 @@ class GetBaseCurrencyUseCaseTest {
 	fun `WHEN invoke calls EXPECT data from repository returns`() {
 		val expectedResult = CurrencyRate(
 			code = "EUR",
-			value = 1.5
+			value = BigDecimal.valueOf(1.5),
+			rate = BigDecimal.valueOf(1.0)
 		)
 		whenever(repository.get()).thenReturn(expectedResult)
 
