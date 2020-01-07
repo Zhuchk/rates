@@ -20,7 +20,7 @@ class RateItemViewHolder(
 
 	fun bind(
 		currencyRate: CurrencyRate,
-		onItemClicked: ((item: CurrencyRate, position: Int) -> Unit)?
+		onItemClicked: ((item: CurrencyRate) -> Unit)?
 	) {
 		itemView.currencyCode.text = currencyRate.code
 		itemView.fullName.text = currencyRate.fullName
@@ -34,7 +34,7 @@ class RateItemViewHolder(
 			.into(itemView.currencyImage)
 
 		itemView.setOnClickListener {
-			onItemClicked?.invoke(currencyRate, adapterPosition)
+			onItemClicked?.invoke(currencyRate)
 		}
 	}
 

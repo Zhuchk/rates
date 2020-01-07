@@ -33,6 +33,10 @@ class RatesPresenter @Inject constructor(
 	private var ratesList: List<CurrencyRate> = emptyList()
 
 	override fun onCreateView() {
+		subscribeOnRates()
+	}
+
+	private fun subscribeOnRates() {
 		Flowable.interval(1, TimeUnit.SECONDS)
 			.observeOn(AndroidSchedulers.mainThread())
 			.subscribeBy(
@@ -75,10 +79,29 @@ class RatesPresenter @Inject constructor(
 	}
 
 	fun onItemSelected(currencyRate: CurrencyRate) {
+		unsubscribeFromRates()
+		moveItemToTop(currencyRate)
+
 		setBaseCurrencyUseCase(currencyRate)
 
-		viewState?.scrollToTop()
-		viewState?.showProgress()
+		viewState?.showRates(ratesList, true)
+
+		subscribeOnRates()
+	}
+
+	private fun moveItemToTop(currencyRate: CurrencyRate) {
+		val newList = ratesList
+			.filter { it.code != currencyRate.code }
+			.toMutableList()
+
+		newList.add(0, currencyRate)
+
+		ratesList = newList
+	}
+
+	private fun unsubscribeFromRates() {
+		compositeDisposable.clear()
+		viewState?.hideProgress()
 	}
 
 	fun onCurrentRateChanged(value: String) {

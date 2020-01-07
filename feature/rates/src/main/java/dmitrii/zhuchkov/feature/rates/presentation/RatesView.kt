@@ -9,9 +9,7 @@ import dmitrii.zhuchkov.feature.rates.domain.entity.CurrencyRate
  */
 interface RatesView : MVPView {
 
-	fun showRates(list: List<CurrencyRate>)
-
-	fun scrollToTop()
+	fun showRates(list: List<CurrencyRate>, scrollToTop: Boolean = false)
 
 	fun showError(message: String)
 

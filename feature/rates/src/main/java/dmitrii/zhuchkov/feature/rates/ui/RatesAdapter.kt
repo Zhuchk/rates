@@ -58,8 +58,7 @@ class RatesAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 		} ?: super.onBindViewHolder(holder, position, payloads)
 	}
 
-	private fun onItemClicked(item: CurrencyRate, position: Int) {
+	private fun onItemClicked(item: CurrencyRate) {
 		onItemClicked?.invoke(item)
-		notifyItemMoved(position, 0)
 	}
 }

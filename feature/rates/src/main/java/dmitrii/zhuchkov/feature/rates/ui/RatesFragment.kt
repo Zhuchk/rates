@@ -46,12 +46,8 @@ class RatesFragment : MVPFragment(), RatesView {
 		rateRecycler.itemAnimator = null
 	}
 
-	override fun showRates(list: List<CurrencyRate>) {
-		dispatchDiff(adapter.items, list)
-	}
-
-	override fun scrollToTop() {
-		rateRecycler.smoothScrollToPosition(0)
+	override fun showRates(list: List<CurrencyRate>, scrollToTop: Boolean) {
+		dispatchDiff(adapter.items, list, scrollToTop)
 	}
 
 	override fun showError(message: String) {
@@ -68,7 +64,7 @@ class RatesFragment : MVPFragment(), RatesView {
 		rateRecycler.isClickable = true
 	}
 
-	private fun dispatchDiff(oldItems: List<CurrencyRate>, newItems: List<CurrencyRate>) {
+	private fun dispatchDiff(oldItems: List<CurrencyRate>, newItems: List<CurrencyRate>, scrollToTop: Boolean) {
 		Single.fromCallable {
 			val diffCallback = RatesDiffCallback(oldItems, newItems)
 			DiffUtil.calculateDiff(diffCallback)
@@ -78,6 +74,10 @@ class RatesFragment : MVPFragment(), RatesView {
 			.subscribeBy {
 				adapter.items = newItems
 				it.dispatchUpdatesTo(adapter)
+
+				if (scrollToTop) {
+					rateRecycler.smoothScrollToPosition(0)
+				}
 			}
 	}
 }
